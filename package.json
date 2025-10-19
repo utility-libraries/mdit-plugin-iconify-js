@@ -1,0 +1,44 @@
+{
+  "name": "mdit-plugin-iconify",
+  "version": "0.0.0",
+  "description": "markdown-it plugin to add icons into your markdown",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "files": [
+    "dist",
+    "index.css"
+  ],
+  "license": "GPL-3.0-or-later",
+  "author": "Utility-Libraries",
+  "homepage": "https://github.com/utility-libraries/mdit-plugin-iconify-js#readme",
+  "bugs": {
+    "url": "https://github.com/utility-libraries/mdit-plugin-iconify-js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utility-libraries/mdit-plugin-iconify-js.git"
+  },
+  "keywords": [
+    "markdown-it",
+    "iconify"
+  ],
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^24.8.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@iconify/utils": "^3"
+  },
+  "peerDependencies": {
+    "@iconify/types": "^2.0.0",
+    "markdown-it": "^14"
+  }
+}

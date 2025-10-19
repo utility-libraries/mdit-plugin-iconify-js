@@ -1,0 +1,26 @@
+/* Base icon behavior */
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* Size utilities (relative to font size) */
+.icon.sm { width: 0.75em; height: 0.75em; }
+.icon.md { width: 1em; height: 1em; }
+.icon.lg { width: 1.5em; height: 1.5em; }
+.icon.xl { width: 2em; height: 2em; }
+
+/* Semantic color classes */
+.icon.success { color: #16a34a; }
+.dark .icon.success { color: #4ade80; }
+
+.icon.warning { color: #f59e0b; }
+.dark .icon.warning { color: #facc15; }
+
+.icon.error { color: #dc2626; }
+.dark .icon.error { color: #f87171; }
+
+.icon.info { color: #2563eb; }
+.dark .icon.info { color: #60a5fa; }
