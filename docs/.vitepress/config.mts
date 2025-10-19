@@ -7,6 +7,7 @@ import { icons as simpleIcons } from "@iconify-json/simple-icons";
 export default defineConfig({
   title: "mdit-plugin-iconify",
   description: "markdown-it plugin to add icons into your markdown",
+  base: ".",
   srcDir: "src",
   cleanUrls: true,
   themeConfig: {
