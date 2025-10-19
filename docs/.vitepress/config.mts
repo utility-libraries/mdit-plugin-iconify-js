@@ -7,9 +7,10 @@ import { icons as simpleIcons } from "@iconify-json/simple-icons";
 export default defineConfig({
   title: "mdit-plugin-iconify",
   description: "markdown-it plugin to add icons into your markdown",
-  base: ".",
+  base: "/mdit-plugin-iconify-js/",
   srcDir: "src",
   cleanUrls: true,
+  localhostLinks: "localhostLinks",
   themeConfig: {
     nav: [
       {
@@ -56,7 +57,7 @@ export default defineConfig({
 
     socialLinks: [
       {icon: 'github', link: 'https://github.com/utility-libraries/mdit-plugin-iconify-js/'},
-      {icon: 'npm', link: 'https://npmjs.com/packages/mdit-plugin-iconify/'},
+      {icon: 'npm', link: 'https://npmjs.com/package/mdit-plugin-iconify/'},
     ],
   },
   markdown: {
