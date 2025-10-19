@@ -1,6 +1,6 @@
 {
   "name": "mdit-plugin-iconify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "markdown-it plugin to add icons into your markdown",
   "type": "module",
   "main": "dist/index.js",
