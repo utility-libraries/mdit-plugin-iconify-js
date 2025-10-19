@@ -32,9 +32,9 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path:
-            - package-lock.json
-            - docs/package-lock.json
+          cache-dependency-path: |
+            package-lock.json
+            docs/package-lock.json
 
       - name: Install package dependencies
         run: npm clean-install
