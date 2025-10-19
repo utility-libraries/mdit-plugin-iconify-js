@@ -10,13 +10,13 @@ hero:
       text: Get Started
       link: /quick-start
     - theme: alt
-      text: Repository
+      text: GitHub
       link: https://github.com/utility-libraries/mdit-plugin-iconify-js
     - theme: alt
-      text: npm
+      text: NPM
       link: https://npmjs.com/package/mdit-plugin-iconify
     - theme: alt
-      text: iconify
+      text: Iconify
       link: https://iconify.design/
 
 features:
