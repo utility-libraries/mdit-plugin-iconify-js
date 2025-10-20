@@ -25,15 +25,3 @@ export function parseAttrs(input: string | undefined): Record<string, string> {
 
   return out;
 }
-
-/**
- * Escapes the attr-value for attr="value"
- */
-export function escapeAttr(value: string): string {
-  return value
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-}

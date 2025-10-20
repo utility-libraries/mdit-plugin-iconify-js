@@ -1,7 +1,6 @@
-import { getIconData, iconToSVG } from "@iconify/utils";
+import { getIconData, iconToHTML, iconToSVG, replaceIDs } from "@iconify/utils";
 import type { IconData, IconRenderOptions } from "./types.ts";
 import { IconifyJSON } from "@iconify/types";
-import { escapeAttr } from "./attrs.ts";
 
 /**
  * Try to resolve an icon from Iconify collections map.
@@ -35,16 +34,11 @@ export function renderSVG(
 ): string {
   const baseClass = opts.iconClass ?? "icon";
   const attrs: Record<string, string> = {
-    style: "",
     class: "",
     ...icon.attributes,
     ...extraAttrs,
   };
   attrs.class = `${baseClass} ${attrs.class}`.trim();
 
-  const attrStr = Object.entries(attrs)
-      .map(([k, v]) => `${k}="${escapeAttr(String(v))}"`)
-      .join(" ");
-
-  return `<svg ${attrStr}>${icon.body}</svg>`;
+  return iconToHTML(replaceIDs(icon.body), attrs);
 }
