@@ -7,16 +7,6 @@ title: Configuration
 The plugin accepts a configuration object when registered with **markdown-it**.  
 These options control which icon collections are available and how icons are rendered.
 
-## ::table:: Properties
-
-| Option              | Type                                                                               | Required                 | Default  | Description                                                                                 |
-|---------------------|------------------------------------------------------------------------------------|--------------------------|----------|---------------------------------------------------------------------------------------------|
-| `collections`       | `Record<string, IconifyIcons>`                                                     | ::check::{.success.lg} | –        | Defines available icon sets. Each key is a collection name mapped to its Iconify JSON data. |
-| `defaultCollection` | `string`                                                                           | ::x::{.error.lg}       | –        | Sets a fallback collection. Icons without an explicit collection-name use this.             |
-| `iconClass`         | `string`                                                                           | ::x::{.error.lg}       | `"icon"` | Base CSS class applied to every rendered icon.                                              |
-| `height`            | `string`                                                                           | ::x::{.error.lg}       | `"1em"`  | Default icon height; width scales automatically.                                            |
-| `iconResolver`      | `(collection: string, name: string) => IconData \| Promise<IconData> \| undefined` | ::x::{.error.lg}       | –        | Custom resolver for loading icons dynamically or from non-Iconify sources.                  |
-
 ## ::braces:: Type Definitions
 
 <<< @/../../src/types.ts
@@ -43,7 +33,7 @@ md.use(iconPlugin, {
 ```
 
 This configuration enables both **Lucide** and **Simple Icons**,
-sets `"lucide"` as the default collection, and applies the `.iconify` class to all icons.
+sets `"lucide"` as the default collection, and applies the custom `.iconify` class to all icons.
 
 ## ::rocket:: Advanced Use: Custom Resolver
 

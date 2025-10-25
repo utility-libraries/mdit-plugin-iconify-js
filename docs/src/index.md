@@ -20,23 +20,29 @@ hero:
       link: https://iconify.design/
 
 features:
-  - title: Use Any Iconify Collection
-    details: Load icons from @iconify-json packages or your own collections.
+  - icon: "::social/iconify::"
+    title: Use Any Iconify Collection
+    details: Load icons from @iconify-json/* packages or your own collections.
     link: https://icon-sets.iconify.design/
     linkText: Browse Iconify
-  - title: Simple Markdown Syntax
-    details: Embed icons with `::[collection]/[icon-name]::` or `::[icon-name]::`.
+  - icon: "::social/markdown::"
+    title: Simple Markdown Syntax
+    details: Embed icons with <code>::[collection]/[icon-name]::</code> or <code>::[icon-name]::</code>.
     link: /usage
     linkText: See usage
-  - title: Fully Customizable
+  - icon: "::blocks::"
+    title: Fully Customizable
     details: Add size modifiers, custom CSS, or replace icon sets anytime.
     link: /customization
     linkText: See customization
-  - title: Cleaner Than Unicode Icons
+  - icon: "􏿮"
+    title: Cleaner Than Unicode Icons
     details: Semantic markup instead of obscure Unicode symbols or inline SVG strings.
-  - title: Packed Inline, Instantly Loaded
+  - icon: "::code-xml::"
+    title: Packed Inline, Instantly Loaded
     details: Icons are bundled into the rendered HTML, no external requests done.
-  - title: Framework-Agnostic Output
+  - icon: "::file-code::"
+    title: Framework-Agnostic Output
     details: Works with any static site generator or frontend framework consuming Markdown.
 ---
 

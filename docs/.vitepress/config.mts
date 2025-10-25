@@ -1,7 +1,16 @@
 import { defineConfig } from 'vitepress';
 import mdPluginIconify from "mdit-plugin-iconify";
+import { createIconRenderer, mditPluginIconifyPattern, parseAttrs } from "mdit-plugin-iconify";
 import { icons as lucideIcons } from "@iconify-json/lucide";
 import { icons as simpleIcons } from "@iconify-json/simple-icons";
+
+const iconRenderer = createIconRenderer({
+  collections: {
+    lucide: lucideIcons,
+    social: simpleIcons,
+  },
+  defaultCollection: lucideIcons,
+});
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -55,6 +64,10 @@ export default defineConfig({
       }
     ],
 
+    search: {
+      provider: "local",
+    },
+
     socialLinks: [
       {icon: 'github', link: 'https://github.com/utility-libraries/mdit-plugin-iconify-js/'},
       {icon: 'npm', link: 'https://npmjs.com/package/mdit-plugin-iconify/'},
@@ -62,13 +75,18 @@ export default defineConfig({
   },
   markdown: {
     config(md) {
-      md.use(mdPluginIconify, {
-        collections: {
-          lucide: lucideIcons,
-          social: simpleIcons,
-        },
-        defaultCollection: "lucide",
-      });
+      md.use(mdPluginIconify, iconRenderer);
+    }
+  },
+  transformPageData(pageData) {
+    if ('features' in pageData.frontmatter && Array.isArray(pageData.frontmatter.features)) {
+      for (const feature of pageData.frontmatter.features) {
+        if ('icon' in feature && typeof feature.icon === "string") {
+          feature.icon = feature.icon.replaceAll(mditPluginIconifyPattern, (_, maybeCollection, name, attrStr) => {
+            return iconRenderer(maybeCollection, name, parseAttrs(attrStr));
+          });
+        }
+      }
     }
   },
 });

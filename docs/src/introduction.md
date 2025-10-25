@@ -37,7 +37,7 @@ Tens of thousands of icons are instantly available.
 
 ### 2. Semantic and Readable
 
-Icons are defined with clear text syntax, not SVG blobs or magic Unicode characters.
+Icons are defined with clear text syntax, not SVG blobs or magic Unicode characters that may not be supported.
 
 ### 3. Inline and Self-Contained
 

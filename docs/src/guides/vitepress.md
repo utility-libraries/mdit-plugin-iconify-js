@@ -2,7 +2,7 @@
 title: VitePress Integration
 ---
 
-# ::zap:: Integration Guide: VitePress
+# ::social/vitepress:: Integration Guide: VitePress
 
 This guide explains how to integrate **mdit-plugin-iconify** into a VitePress project.
 
@@ -50,6 +50,62 @@ export default defineConfig({
 
 This makes all icons in the `lucide` collection available in your Markdown.
 The `defaultCollection` allows you to omit the collection prefix for cleaner syntax.
+
+::: details `.vitepress/config.ts` with frontmatter support
+
+In vitepress you can have a special homepage with a feature-section which is configured via the frontmatter.
+Unfortunately the frontmatter is not processed by this plugin.
+So if you want to define icons in the features section, you need to transform the parsed frontmatter manually.
+
+::: code-group
+
+```ts [.vitepress/config.ts]
+import { defineConfig } from 'vitepress';
+import mdPluginIconify from "mdit-plugin-iconify";
+import { createIconRenderer, mditPluginIconifyPattern, parseAttrs } from "mdit-plugin-iconify";
+import { icons as lucideIcons } from "@iconify-json/lucide";
+
+const iconRenderer = createIconRenderer({
+  collections: {
+    lucide: lucideIcons,
+  },
+  defaultCollection: lucideIcons,
+});
+
+export default defineConfig({
+  // ... other VitePress config
+  markdown: {
+    config(md) {
+      md.use(mdPluginIconify, iconRenderer);
+    },
+  },
+  transformPageData(pageData) {
+    if ('features' in pageData.frontmatter && Array.isArray(pageData.frontmatter.features)) {
+      for (const feature of pageData.frontmatter.features) {
+        if ('icon' in feature && typeof feature.icon === "string") {
+          feature.icon = feature.icon.replaceAll(mditPluginIconifyPattern, (_, maybeCollection, name, attrStr) => {
+            return iconRenderer(maybeCollection, name, parseAttrs(attrStr));
+          });
+        }
+      }
+    }
+  },
+});
+```
+
+```markdown [index.md]
+---
+layout: home
+// other options...
+features:
+  - icon: "::code::"
+    name: Frontmatter support
+    description: You should now be able to cleanly add icons into your features-section.
+---
+<!-- other content -->
+```
+
+:::
 
 ## ::palette:: Add Default Styles
 
