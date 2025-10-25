@@ -16,36 +16,31 @@ export type IconData = {
 
 /**
  * A function to resolve an icon dynamically.
- * Can return either synchronously or asynchronously. (asynchronously currently unsupported)
- * Return `undefined` if the icon cannot be found.
+ * @param collection name of the collection requested
+ * @param name icon name within the collection
+ * @return `undefined` if the icon cannot be found.
  */
 export type IconResolver = (
-    /** The name of the collection requested */
-    collection: string,
-    /** The icon name within the collection */
+    collection: string | undefined,
     name: string,
-) => IconifyIcon | undefined | Promise<IconifyIcon | undefined>
+) => IconifyIcon | IconData | undefined
 
 /**
- * Options that control the rendering of individual icons.
+ * @param collection name of the collection requested
+ * @param name icon name within the collection
+ * @param attributes html-attributes to add to the svg-html
+ * @return svg-html or undefined if not found
  */
-export interface IconRenderOptions {
-  /**
-   * Default height for rendered icons.
-   * Width will scale automatically to maintain aspect ratio.
-   */
-  height?: string
-
-  /**
-   * CSS class to apply to every rendered icon element.
-   */
-  iconClass?: string
-}
+export type IconRenderer = (
+    collection: string | undefined,
+    name: string,
+    attributes?: Record<string, string>,
+) => string | undefined
 
 /**
- * Options passed to `mdit-plugin-iconify`.
+ * Options passed to `createIconRenderer`.
  */
-export interface IconifyPluginOptions extends IconRenderOptions {
+export interface CreateIconRendererOptions {
   /**
    * Map of collection name -> Iconify icon set.
    * Example: { lucide, "simple-icons": simpleIcons }
@@ -57,11 +52,22 @@ export interface IconifyPluginOptions extends IconRenderOptions {
    * If provided, icons without a collection prefix use this collection.
    * If omitted, unprefixed icons are ignored.
    */
-  defaultCollection?: string
+  defaultCollection?: string | IconifyJSON
 
   /**
    * Optional resolver for non-Iconify icons or dynamic icons.
    * Useful for fetching icons from external sources or custom collections.
    */
   iconResolver?: IconResolver
+
+  /**
+   * Default height for rendered icons.
+   * Width will scale automatically to maintain aspect ratio.
+   */
+  height?: string
+
+  /**
+   * CSS class to apply to every rendered icon element.
+   */
+  iconClass?: string
 }
